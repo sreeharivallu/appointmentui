@@ -40,7 +40,7 @@
           
           <div class="form-group col-md-5">
             <label for="age1">Age</label>
-            <input type="text" [(ngModel)]="booking.age" name="age1" pattern = "[0-9]{1,3}" class="form-control" id="age1" placeholder="Age">
+            <input type="text" [(ngModel)]="booking.age" #age1="ngModel" name="age1" pattern = "[0-9]{1,3}" class="form-control" id="age1" placeholder="Age">
             <div *ngIf="f.submitted && age1.invalid" class="invalid-feedback">                
                 <div *ngIf="age1.errors?.pattern">age contains only number</div>
             </div>
