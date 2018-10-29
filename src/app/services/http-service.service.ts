@@ -14,7 +14,7 @@ export class HttpServiceService {
 
   postData(data):Observable <any>{
 
-    let url = "https://appoinment.herokuapp.com/"; //"http://localhost:3000/book_appointment";
+    let url = "https://appoinment.herokuapp.com/book_appointment"; //"http://localhost:3000/book_appointment";
     
     const httpOptions = {
       headers: new HttpHeaders({
@@ -32,7 +32,7 @@ export class HttpServiceService {
 
   getData(data):Observable <any>{
 
-    let url = "http://localhost:3000/appointments/" + data;
+    let url = "https://appoinment.herokuapp.com/appointments/" + data;
     
     const httpOptions = {
       headers: new HttpHeaders({

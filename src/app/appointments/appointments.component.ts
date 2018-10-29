@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 import { Observable, throwError } from 'rxjs';
 import { HttpServiceService } from '../services/http-service.service';
@@ -12,7 +13,8 @@ export class AppointmentsComponent implements OnInit {
 
   appointments: any;
   //today:any;
-  constructor(private httpService : HttpServiceService) { }
+  constructor(private httpService : HttpServiceService,
+              private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
     this.getAppointments();
@@ -31,8 +33,9 @@ export class AppointmentsComponent implements OnInit {
         ('00' + (date.getMonth()+1)).slice(-2) + '-' +
         ('00' + date.getDate()).slice(-2);
     }
-        
+    this.spinner.show();    
     this.httpService.getData(appoinments_date).subscribe(appointments => {
+      this.spinner.hide();
       this.appointments = appointments;
     })
   }
