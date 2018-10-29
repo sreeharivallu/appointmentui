@@ -1,0 +1,65 @@
+<ngx-spinner bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Confirming Appointment...</p> 
+</ngx-spinner>
+
+<div class="container">    
+  <div class="row">
+    <div class="col-md-2">
+    </div>
+    <div class="cold-md-8">
+      <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <label for="phone1"><span class="mandatory">*</span>Phone</label>
+            <input type="text" [(ngModel)]="booking.phone" name="phone1" #phone1="ngModel"
+                   class="form-control" id="phone" aria-describedby="phoneHelp"
+                   pattern = "[0-9]{13}"  
+                   placeholder="Enter phone number" [ngClass]="{ 'is-invalid': f.submitted && phone1.invalid }"
+                   required>
+            <div *ngIf="f.submitted && phone1.invalid" class="invalid-feedback">
+                <div *ngIf="phone1.errors.required">phone number is required</div>
+                <div *ngIf="phone1.errors.pattern">phone number contains only number</div>
+            </div>
+          </div>
+          
+          <div class="form-group col-md-5">
+              <label for="email1">Email</label>
+              <input type="email" [(ngModel)]="booking.email" name="email" class="form-control" id="email1" placeholder="email">
+            </div>
+          <div class="form-group col-md-5" >
+            <label for="firstname1">First name</label>
+            <input type="text" [(ngModel)]="booking.first_name" name="first_name" class="form-control" id="firstname1" placeholder="first name">
+          </div>
+          <div class="form-group col-md-5">
+            <label for="lastname1">Last name</label>
+            <input type="text" [(ngModel)]="booking.last_name" name="last_name" class="form-control" id="lastname1" placeholder="last name">
+          </div>
+          
+          <div class="form-group col-md-5">
+            <label for="DOB1">Age</label>
+            <input type="date" [(ngModel)]="booking.DOB" name="DOB" class="form-control" id="DOB1" placeholder="date of birth">
+          </div>
+          <div class="form-group col-md-5">
+            <label for="appointment1"><span class="mandatory">*</span>Appointment</label>
+            <dl-date-time-picker [(ngModel)]="booking.appointment_datetime" name="appointment1" #appointment1="ngModel" 
+             required></dl-date-time-picker>
+            <!--div *ngIf="f.submitted && appointment1.invalid" class="invalid-feedback">
+                <div *ngIf="appointment1.errors.required">appointment time is required</div>
+            </div-->
+          </div>
+                    
+          <div class="form-group col-md-8">
+              <button type="submit" class="btn btn-primary">Book</button>
+          </div>
+          
+        </div>
+      </form>
+    </div>
+    <div class="col-md-2">
+
+    </div>    
+  </div>
+</div>

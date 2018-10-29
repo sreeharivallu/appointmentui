@@ -1,0 +1,23 @@
+<div>
+ <input type="date"  (change)="onDateChange($event)"/>
+</div>
+<div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <th scope="col"> # </th>
+        <th scope="col"> phone </th>
+        <th scope="col"> name </th>
+        <!--th scope="col"> age </th-->
+        <th scope="col"> time </th>
+      </thead>
+      <tr *ngFor="let appointment of appointments">
+        <td> #</td>
+        <td> {{appointment.phone}}</td>
+        <td> {{appointment.first_name}} {{appointment.last_name}}</td>
+        <!--td> {{appointment.DOB}}</td-->
+        <td> {{appointment.appointment_date.substring(
+            appointment.appointment_date.lastIndexOf('T')+1,
+            appointment.appointment_date.lastIndexOf('.')-3)}}</td>
+      </tr>
+    </table>
+  </div>
