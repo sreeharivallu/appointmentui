@@ -29,7 +29,14 @@ export class BookingFormComponent implements OnInit {
   onSubmit(){
 
     console.log('booking form is',this.booking);
-    this.booking.appointment_datetime = new Date(this.booking.appointment_datetime).toLocaleString();
+    let date = new Date(this.booking.appointment_datetime);
+    this.booking.appointment_datetime = date.getFullYear() + '-' +
+    ('00' + (date.getMonth()+1)).slice(-2) + '-' +
+    ('00' + date.getDate()).slice(-2) + ' ' + 
+    ('00' + date.getHours()).slice(-2) + ':' + 
+    ('00' + date.getMinutes()).slice(-2) + ':' + 
+    ('00' + date.getSeconds()).slice(-2);
+    //new Date(this.booking.appointment_datetime).toLocaleString();
     this.spinner.show();
     this.httpService.postData(this.booking).subscribe(bookedData => {
       this.spinner.hide();
