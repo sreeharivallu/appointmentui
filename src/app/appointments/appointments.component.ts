@@ -12,13 +12,13 @@ import { HttpServiceService } from '../services/http-service.service';
 export class AppointmentsComponent implements OnInit {
 
   appointments: any;
-  //today:any;
+  day:any;
   constructor(private httpService : HttpServiceService,
               private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
     this.getAppointments();
-    //this.today = new Date();
+    this.day = new Date();
   }
 
   getAppointments(ofDate?) {

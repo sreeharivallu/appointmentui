@@ -6,7 +6,7 @@
 </ngx-spinner>
 
 <div style="text-align:right">
- <input type="date"  (change)="onDateChange($event)"/>
+ <input type="date"  [ngModel]="day | date : 'yyyy-MM-dd' " (change)="onDateChange($event)"/>
 </div>
 <div class="table-responsive">
     <table class="table table-striped">
