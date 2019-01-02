@@ -17,8 +17,8 @@
         <!--th scope="col"> age </th-->
         <th scope="col"> time </th>
       </thead>
-      <tr *ngFor="let appointment of appointments">
-        <td> #</td>
+      <tr *ngFor="let appointment of appointments; index as i">
+        <td> {{i+1}}</td>
         <td> {{appointment.phone}}</td>
         <td> {{appointment.first_name}} {{appointment.last_name}}</td>
         <!--td> {{appointment.DOB}}</td-->
